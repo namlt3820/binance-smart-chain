@@ -1,0 +1,10 @@
+version: '3'
+services:
+  bsc:
+    build:
+      context: ./bsc
+    volumes:
+      - /data/bsc:/root
+    ports:
+      - '30311:30311'
+      - '8575:8545'

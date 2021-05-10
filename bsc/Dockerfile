@@ -26,4 +26,4 @@ EXPOSE 8575 8576 8577 30311 30311/udp
 
 ENTRYPOINT ["/entrypoint.sh"]
 
-CMD ["bsc"]
+CMD ["bsc", "-syncmode", "fast", "-nousb", "-cache", "4096"]
