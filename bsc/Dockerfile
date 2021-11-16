@@ -25,4 +25,4 @@ EXPOSE 8575 8576 8577 30311 30311/udp
 
 ENTRYPOINT ["/entrypoint.sh"]
 
-CMD ["bsc", "-ws", "-ws.addr", "0.0.0.0", "-ws.origins", "*", "-syncmode", "fast", "-nousb", "-cache", "8192", "-maxpeers", "1000"]
+CMD ["bsc", "-ws", "-ws.addr", "0.0.0.0", "-ws.origins", "*", "-syncmode", "snap", "-nousb", "-cache", "32768", "-maxpeers", "1000"]
