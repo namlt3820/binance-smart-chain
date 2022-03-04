@@ -5,10 +5,10 @@ RUN apt-get update -y \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ARG VERSION=1.1.7
+ARG VERSION=1.1.8
 
-RUN curl --silent "https://api.github.com/repos/binance-chain/bsc/releases/tags/v${VERSION}" | jq -c '.assets[] | select( .browser_download_url | contains("mainnet.zip") or contains("geth_linux")) | .browser_download_url' | xargs -n1 curl -LOJ && \
-    unzip mainnet.zip -d / && \
+RUN curl --silent "https://api.github.com/repositories/265775217/releases/tags/v${VERSION}" | jq -c '.assets[] | select( .browser_download_url | contains("testnet.zip") or contains("geth_linux")) | .browser_download_url' | xargs -n1 curl -LOJ && \
+    unzip testnet.zip -d / && \
     sed -i '/Node\.LogConfig/,/^$/d' /config.toml && \
     sed -i 's/HTTPHost = "localhost"/HTTPHost = "0.0.0.0"/g' /config.toml && \
     mv geth_linux /usr/local/bin/bsc && \

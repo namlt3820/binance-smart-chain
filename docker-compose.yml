@@ -1,12 +1,21 @@
 version: '3'
 services:
   bsc:
+    container_name: binance_smart_chain
     build:
       context: ./bsc
     volumes:
       - ./data/bsc:/root
     ports:
       - '30311:30311'
-      - '8575:8575'
       - '8576:8576'
     restart: always
+  nginx:
+    container_name: bitnami_nginx
+    build:
+      context: ./nginx
+    ports:
+      - '8575:8575'
+    volumes:
+      - ./nginx/my_server_block.conf:/opt/bitnami/nginx/conf/server_blocks/my_server_block.conf:ro
+      - ./nginx/.auth:/opt/bitnami/nginx/.auth
