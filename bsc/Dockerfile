@@ -5,7 +5,7 @@ RUN apt-get update -y \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ARG VERSION=1.1.10
+ARG VERSION=1.1.12
 
 RUN curl --silent "https://api.github.com/repositories/265775217/releases/tags/v${VERSION}" | jq -c '.assets[] | select( .browser_download_url | contains("testnet.zip") or contains("geth_linux")) | .browser_download_url' | xargs -n1 curl -LOJ && \
     unzip testnet.zip -d / && \
